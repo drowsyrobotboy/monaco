@@ -1,0 +1,14 @@
+{
+  "name": "Monaco",
+  "version": "1.0.0",
+  "description": "Monaco App",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Maruthi Sharma",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-prebuilt": "^0.26.1"
+  }
+}
