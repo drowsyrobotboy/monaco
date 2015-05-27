@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Monaco</title>
+  <link href="main.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">
+      var app = require('./app.js');
+  </script>
 </head>
 <body>
-  
+  <div class="titlebar">Monaco</div>
+  <div class="wrapper">
+    <button onclick="app.toggleDev()">Dev Tools</button>
+    <button onclick="app.fullscreen()">Full Screen</button>
+    <button onclick="app.reload()">Reload</button>
+    <button onclick="app.close()">Close</button>
+    <button onclick="app.minimize()">Minimize</button>
+  </div>
 </body>
 </html>

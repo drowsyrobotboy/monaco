@@ -18,13 +18,31 @@ app.on('window-all-closed', function() {
 // initialization and ready for creating browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width: 800, height: 600, frame:false, resizable:false, transparent:true });
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
 
-  // Open the devtools.
-  mainWindow.openDevTools();
+  //using IPC
+  var ipc = require('ipc');
+  ipc.on('c2s', function(event, arg) {
+  if(arg=='toggleDev'){
+    mainWindow.toggleDevTools()
+  }
+  else if(arg=='fullscreen'){
+   mainWindow.isFullScreen()?mainWindow.setFullScreen(false):mainWindow.setFullScreen(true);
+  }
+  else if(arg=='reload'){
+    mainWindow.reload();
+  }
+  else if(arg=='close'){
+    mainWindow.close();
+  }
+  else if(arg=='minimize'){
+    mainWindow.minimize();
+  }
+  event.sender.send('s2c', 'Done!');
+  });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
